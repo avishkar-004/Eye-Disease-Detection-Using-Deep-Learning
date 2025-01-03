@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model files (large)
+# *.h5
+
+# Uploads
+Flask/static/uploads/*.jpg
+Flask/static/uploads/*.jpeg
+Flask/static/uploads/*.png
+!Flask/static/uploads/.gitkeep

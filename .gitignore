@@ -32,3 +32,10 @@ Flask/static/uploads/*.jpg
 Flask/static/uploads/*.jpeg
 Flask/static/uploads/*.png
 !Flask/static/uploads/.gitkeep
+
+# Large dataset splits
+dataset_split/
+
+# Temporary files
+*.tmp
+*.bak

@@ -34,3 +34,13 @@ Eye-Disease-Detection-Using-Deep-Learning/
 └── README.md
 ```
 
+
+## Dataset
+
+The dataset contains retinal fundus images organized into four classes:
+- **Cataract** - ~1000 images
+- **Diabetic Retinopathy** - ~1100 images
+- **Glaucoma** - ~1000 images
+- **Normal** - ~1070 images
+
+Images are preprocessed to 256x256 pixels and normalized to [0, 1] range.

@@ -1,0 +1,19 @@
+from setuptools import setup, find_packages
+
+setup(
+    name="eye-disease-detection",
+    version="1.0.0",
+    description="CNN-based eye disease detection from retinal images",
+    author="Avishkar Pawar",
+    packages=find_packages(),
+    python_requires=">=3.8",
+    install_requires=[
+        "flask>=3.0.0",
+        "tensorflow>=2.15.0",
+        "numpy>=1.26.0",
+        "pillow>=10.0.0",
+        "opencv-python>=4.8.0",
+        "matplotlib>=3.8.0",
+        "scikit-learn>=1.3.0",
+    ],
+)

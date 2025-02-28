@@ -68,3 +68,19 @@ if __name__ == "__main__":
         true_labels, pred_labels, class_names,
         os.path.join(results_dir, "confusion_matrix.png")
     )
+
+
+def plot_normalized_confusion_matrix(true_labels, pred_labels,
+                                      class_names, save_path):
+    """Generate normalized confusion matrix."""
+    import seaborn as sns
+    cm = confusion_matrix(true_labels, pred_labels, normalize='true')
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(cm, annot=True, fmt='.2%', cmap='Greens',
+                xticklabels=class_names, yticklabels=class_names)
+    plt.title('Normalized Confusion Matrix')
+    plt.xlabel('Predicted Label')
+    plt.ylabel('True Label')
+    plt.tight_layout()
+    plt.savefig(save_path, dpi=150)
+    plt.close()

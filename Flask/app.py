@@ -8,9 +8,9 @@ from PIL import Image
 app = Flask(__name__)
 
 # Define the absolute path for uploads inside the project directory
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))  # Get current project directory
-UPLOAD_FOLDER = os.path.join(BASE_DIR, 'static', 'uploads')  # Ensure it's inside 'Eye_Disease_Detection'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)  # Create directory if it does not exist
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+UPLOAD_FOLDER = os.path.join(BASE_DIR, 'static', 'uploads')
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
@@ -19,19 +19,20 @@ ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 MODEL_PATH = os.path.join(BASE_DIR, "eye_disease_model.h5")
 model = tf.keras.models.load_model(MODEL_PATH)
 
-# Function to check allowed file types
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-# Prediction function
+
 def predict_image(image_path):
-    img = Image.open(image_path).resize((256, 256))  # Resize to match model input
-    img = np.array(img) / 255.0  # Normalize
-    img = np.expand_dims(img, axis=0)  # Add batch dimension
+    img = Image.open(image_path).resize((256, 256))
+    img = np.array(img) / 255.0
+    img = np.expand_dims(img, axis=0)
     predictions = model.predict(img)
-    class_index = np.argmax(predictions)  # Get predicted class index
-    class_names = ["Normal", "Diabetic Retinopathy", "Cataract", "Glaucoma"]  # Adjust according to your dataset
-    return class_names[class_index]  # Return predicted class name
+    class_index = np.argmax(predictions)
+    class_names = ["Normal", "Diabetic Retinopathy", "Cataract", "Glaucoma"]
+    return class_names[class_index]
+
 
 @app.route("/", methods=["GET", "POST"])
 def upload_image():
@@ -47,14 +48,12 @@ def upload_image():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
-            file.save(filepath)  # Save the file to the correct path
-
-            # Predict the image
+            file.save(filepath)
             prediction = predict_image(filepath)
-
             return render_template("index.html", filename=filename, prediction=prediction)
 
     return render_template("index.html")
+
 
 if __name__ == "__main__":
     app.run(debug=True)

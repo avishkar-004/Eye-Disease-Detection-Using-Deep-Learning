@@ -13,7 +13,6 @@
             <input type="file" name="file" accept="image/*" required>
             <button type="submit">Upload & Predict</button>
         </form>
-
         {% if filename %}
             <h3>Prediction: {{ prediction }}</h3>
             <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image">

@@ -57,3 +57,18 @@ def upload_image():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+
+@app.route("/about")
+def about():
+    return render_template("about.html")
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("index.html", message="Page not found"), 404
+
+
+@app.errorhandler(500)
+def internal_error(e):
+    return render_template("index.html", message="Internal server error"), 500

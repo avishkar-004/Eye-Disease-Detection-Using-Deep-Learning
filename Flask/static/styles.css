@@ -64,3 +64,16 @@ a:hover { text-decoration: underline; }
 .footer { text-align: center; padding: 15px; background: #343a40; color: #aaa; position: fixed; bottom: 0; width: 100%; }
 .about-page ul, .about-page ol { text-align: left; margin: 10px auto; max-width: 350px; }
 .back-link { display: inline-block; margin-top: 20px; padding: 8px 16px; background: #007bff; color: #fff; border-radius: 5px; text-decoration: none; }
+
+@media (max-width: 768px) {
+    .container { margin: 10px; padding: 15px; max-width: 95%; }
+    .navbar { flex-direction: column; gap: 10px; }
+    .nav-links { flex-direction: column; align-items: center; gap: 10px; }
+}
+.result-card { margin: 20px 0; }
+.result-image { max-width: 300px; margin: 10px auto; }
+.prediction-box { padding: 15px; background: #e8f5e9; border-radius: 8px; margin: 15px 0; }
+.prediction-text { color: #2e7d32; font-size: 1.2em; }
+.message { padding: 10px; border-radius: 5px; margin: 10px 0; }
+.message.error { background: #ffebee; color: #c62828; }
+.message.success { background: #e8f5e9; color: #2e7d32; }

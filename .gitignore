@@ -39,3 +39,8 @@ dataset_split/
 # Temporary files
 *.tmp
 *.bak
+
+.dockerignore
+*.log
+.pytest_cache/
+htmlcov/
